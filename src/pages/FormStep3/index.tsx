@@ -3,6 +3,7 @@ import * as C from './styles';
 import { useForm, FormActions } from '../../contexts/FormContext'
 import { Theme } from '../../components/Theme';
 import { ChangeEvent, useEffect } from 'react';
+import api from "../../services/api";
 
 export const FormStep3 = () => {
 
@@ -23,6 +24,7 @@ export const FormStep3 = () => {
     const handleNextStep = () => {
         if(state.email !== '' && state.github !== '') {
             console.log(state);
+            api.post("/AddDeveloper", state);
         } else {
             alert("Preencha os dados");
         }
